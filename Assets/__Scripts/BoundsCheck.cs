@@ -6,7 +6,8 @@ using UnityEngine;
 /// Keeps a GameObject on screen.
 /// Note that this ONLY works for an orthographic Main Camera at [0,0,0].
 /// </summary>
-public class BoundsCheck : MonoBehaviour {
+public class BoundsCheck : MonoBehaviour
+{
     [Header("Set in Inspector")]
     bool placeholder1; // here to keep VS from freaking out - DELETE IT
 
@@ -28,7 +29,7 @@ public class BoundsCheck : MonoBehaviour {
     void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;
-        Vector3 boundSize = new Vector3(camWidth * 2, camHeight * 2, 0.1f);
-        Gizmos.DrawWireCube(Vector3.zero, boundSize);
+    //  Vector3 boundSize = new Vector3(camWidth * 2, camHeight * 2, 0.1f); TEMP REMOVAL
+    //  Gizmos.DrawWireCube(Vector3.zero, boundSize); TEMP REMOVAL
     }
 }
