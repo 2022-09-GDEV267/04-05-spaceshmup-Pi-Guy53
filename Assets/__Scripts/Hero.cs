@@ -10,9 +10,13 @@ public class Hero : MonoBehaviour {
     public float rollMulti = -45;
     public float pitchMulti = 30;
 
+    public float gameRestartDelay = 2;
+
     [Header("Set Dynamically")]
     [SerializeField]
-    private float _shieldLevel = 1;
+    private float _shieldLevel = 4;
+
+    private GameObject lastTriggerGo = null;
 
     float xAxis, yAxis;
     Vector3 pos;
@@ -50,6 +54,19 @@ public class Hero : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        GameObject go = other.gameObject.transform.root.gameObject;
+        if(go == lastTriggerGo)
+        {
+            return;
+        }
+
+        lastTriggerGo = go;
+
+        if(go.CompareTag("Enemy"))
+        {
+            shieldLevel--;
+            Destroy(go);
+        }
 
     }
 
@@ -60,7 +77,19 @@ public class Hero : MonoBehaviour {
 
     public float shieldLevel
     {
-        get;set;
+        get
+        {
+            return _shieldLevel;
+        }
+        set
+        {
+            _shieldLevel = Mathf.Min(value, 4);
+            if(value < 0)
+            {
+                Destroy(gameObject);
+                Main.S.DelayedRestart(gameRestartDelay);
+            }
+        }
     }
 
 }

@@ -31,7 +31,7 @@ public class Shield : MonoBehaviour {
             mat.mainTextureOffset = new Vector2(.2f * levelShown, 0);
         }
 
-        rotZ = -(rotationSpeed * Time.deltaTime * 360) % 360;
+        rotZ = -(rotationSpeed * Time.time * 360) % 360;
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
     }
