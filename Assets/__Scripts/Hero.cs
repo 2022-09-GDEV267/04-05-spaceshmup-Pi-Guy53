@@ -6,16 +6,12 @@ public class Hero : MonoBehaviour {
     static public Hero S; // Singleton
 
     [Header("Set in Inspector")]
-    // These fields control the movement of the ship
+    private bool placeHolderDELETE;
 
     [Header("Set Dynamically")]
+    private bool placeHolderDELETE2;
 
-
-
-
-
-
-	void Start()
+    void Start()
     {
 
     }
