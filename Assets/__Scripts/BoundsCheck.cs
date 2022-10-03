@@ -9,19 +9,49 @@ using UnityEngine;
 public class BoundsCheck : MonoBehaviour
 {
     [Header("Set in Inspector")]
-    bool placeholder1; // here to keep VS from freaking out - DELETE IT
+    public float radius = 1f;
 
     [Header("Set Dynamically")]
-    bool placeholder2; // here to keep VS from freaking out - DELETE IT
+    private float camWidth, camHeight;
+
+    private Vector3 pos;
 
     void Awake()
     {
 
     }
 
+    private void Start()
+    {
+        camHeight = Camera.main.orthographicSize;
+        camWidth = camHeight * Camera.main.aspect;
+    }
+
     void LateUpdate()
     {
+        pos = transform.position;
 
+        if(pos.x > camWidth - radius)
+        {
+            pos.x = camWidth - radius;
+        }
+
+        if (pos.x < - camWidth + radius)
+        {
+            pos.x = -camWidth + radius;
+        }
+
+        if(pos.y > camHeight - radius)
+        {
+            pos.y = camHeight - radius;
+        }
+
+        if(pos.y < -camHeight + radius)
+        {
+            pos.y = -camHeight + radius;
+        }
+
+        transform.position = pos;
 
     }
 
@@ -29,7 +59,7 @@ public class BoundsCheck : MonoBehaviour
     void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;
-    //  Vector3 boundSize = new Vector3(camWidth * 2, camHeight * 2, 0.1f); TEMP REMOVAL
-    //  Gizmos.DrawWireCube(Vector3.zero, boundSize); TEMP REMOVAL
+        Vector3 boundSize = new Vector3(camWidth * 2, camHeight * 2, 0.1f);
+        Gizmos.DrawWireCube(Vector3.zero, boundSize);
     }
 }

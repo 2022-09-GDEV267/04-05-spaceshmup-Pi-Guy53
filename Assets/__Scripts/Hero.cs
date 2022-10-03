@@ -11,7 +11,8 @@ public class Hero : MonoBehaviour {
     public float pitchMulti = 30;
 
     [Header("Set Dynamically")]
-    private float shieldLEvel = 1;
+    [SerializeField]
+    private float _shieldLevel = 1;
 
     float xAxis, yAxis;
     Vector3 pos;
