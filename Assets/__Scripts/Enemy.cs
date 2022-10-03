@@ -6,14 +6,22 @@ public class Enemy : MonoBehaviour
 {
 
     [Header("Set in Inspector: Enemy")]
-    bool placeholder1; // here to keep VS from freaking out - DELETE IT
+    public float speed = 10f;
+    public float fireRate = 0.3f;
+    public float health = 10;
+    public int score;
+
+    private BoundsCheck bndCheck;
 
     [Header("Set Dynamically: Enemy")]
     bool placeholder2; // here to keep VS from freaking out - DELETE IT
 
-    private void Awake()
-    {
+    private Vector3 tempPos;
 
+    private void Start()
+    {
+        bndCheck = GetComponent<BoundsCheck>();
+        bndCheck.keepOnScreen = false;
     }
 
     // This is a property: A method that acts like a field
@@ -31,12 +39,19 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        Move();
 
+        if (bndCheck != null && bndCheck.offDown)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public virtual void Move()
     {
-
+        tempPos = pos;
+        tempPos.y -= speed * Time.deltaTime;
+        pos = tempPos;
     }
 
     private void OnCollisionEnter(Collision coll)
