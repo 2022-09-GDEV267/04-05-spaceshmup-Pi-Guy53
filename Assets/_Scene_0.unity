@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: c47de7a951040483db72c8c1af1514f7,
+    type: 2}
   m_LightingSettings: {fileID: 341600064}
 --- !u!196 &4
 NavMeshSettings:
@@ -450,7 +451,7 @@ LightingSettings:
   m_PrefabAsset: {fileID: 0}
   m_Name: Settings.lighting
   serializedVersion: 4
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
   m_RealtimeEnvironmentLighting: 1
@@ -1007,7 +1008,10 @@ MonoBehaviour:
   speed: 30
   rollMulti: -30
   pitchMulti: 25
-  _shieldLevel: 1
+  gameRestartDelay: 2
+  _shieldLevel: 4
+  projectile: {fileID: 1899541879965282, guid: 59a4640edad59f94a87c1d235355cb6a, type: 3}
+  projectileSpeed: 40
 --- !u!4 &1342965580
 Transform:
   m_ObjectHideFlags: 0
@@ -1399,5 +1403,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082a6c0e92121ea418a8b7fb25e4f63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.5
+  rotationSpeed: 0.1
   levelShown: 0

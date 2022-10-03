@@ -56,7 +56,11 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision coll)
     {
- 
+        if(coll.gameObject.CompareTag("ProjectileHero"))
+        {
+            Destroy(coll.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     void ShowDamage()

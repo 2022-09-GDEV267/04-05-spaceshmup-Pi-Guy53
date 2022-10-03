@@ -21,6 +21,9 @@ public class Hero : MonoBehaviour {
     float xAxis, yAxis;
     Vector3 pos;
 
+    public GameObject projectile;
+    public float projectileSpeed = 40;
+
     private void Awake()
     {
         if(S == null)
@@ -50,6 +53,18 @@ public class Hero : MonoBehaviour {
         transform.position = pos;
 
         transform.rotation = Quaternion.Euler(yAxis * pitchMulti, xAxis * rollMulti, 0);
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            TempFire();
+        }
+    }
+
+    void TempFire()
+    {
+        GameObject projGo = Instantiate(projectile);
+        projGo.transform.position = transform.position;
+        projGo.GetComponent<Rigidbody>().velocity = Vector3.up * projectileSpeed;
     }
 
     private void OnTriggerEnter(Collider other)
