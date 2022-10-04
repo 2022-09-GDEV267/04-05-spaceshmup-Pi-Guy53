@@ -7,7 +7,6 @@ public class Main : MonoBehaviour
 {
     public static Main S;
 
-
     [Header("Set in Inspector")]
     public GameObject[] prefabEnemies;
     public float enemySpawnPerSecond = .5f;
@@ -33,7 +32,7 @@ public class Main : MonoBehaviour
     public void SpawnEnemy()
     {
         ndx = Random.Range(0, prefabEnemies.Length);
-        GameObject go = Instantiate<GameObject>(prefabEnemies[ndx]);
+        GameObject go = objPool.S.getEnemyShip(ndx);
 
         currentPadding = enemyDefaultPadding;
         if (go.GetComponent<BoundsCheck>())

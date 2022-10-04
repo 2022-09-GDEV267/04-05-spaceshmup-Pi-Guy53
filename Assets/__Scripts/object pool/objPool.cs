@@ -31,22 +31,23 @@ public class objPool : MonoBehaviour
 
         GameObject tempGo;
 
-        for(int i = 0; i < numOfEnemyShips; i++)
+        for (int i = 0; i < numOfEnemyShips; i++)
         {
             tempGo = Instantiate(enemyShipPref);
+            tempGo.GetComponent<enemyShipSpawn>().setUp();
+
             enemyShipList.Add(tempGo);
-            tempGo.SetActive(false);
+            tempGo.GetComponent<enemyShipSpawn>().shipOut = false;
         }
     }
 
     public GameObject getEnemyShip(int shipID)
     {
-        for(int i = 0; i< enemyShipList.Count; i++)
+        for (int i = 0; i < enemyShipList.Count; i++)
         {
-            if (!enemyShipList[i].gameObject.activeInHierarchy)
+            if (!enemyShipList[i].GetComponent<enemyShipSpawn>().shipOut)
             {
-                enemyShipList[i].GetComponent<enemyShipSpawn>().nextShipID = shipID;
-                return enemyShipList[i];
+                return enemyShipList[i].GetComponent<enemyShipSpawn>().getShip(shipID);
             }
         }
 

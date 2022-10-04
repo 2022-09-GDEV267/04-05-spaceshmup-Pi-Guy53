@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
 
         if (bndCheck != null && bndCheck.offDown)
         {
-            Destroy(gameObject);
+            destroyThis();
         }
     }
 
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
         if(coll.gameObject.CompareTag("ProjectileHero"))
         {
             Destroy(coll.gameObject);
-            Destroy(gameObject);
+            destroyThis();
         }
     }
 
@@ -71,5 +71,14 @@ public class Enemy : MonoBehaviour
     void UnShowDamage()
     {
 
+    }
+
+    public void destroyThis()
+    {
+        transform.position = transform.root.transform.position;
+        transform.root.GetComponent<enemyShipSpawn>().shipOut = false;
+        bndCheck.offDown = false;
+
+        gameObject.SetActive(false);
     }
 }
