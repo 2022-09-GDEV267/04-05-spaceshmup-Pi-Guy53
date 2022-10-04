@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
 
     private Vector3 tempPos;
 
+    public enemyShipSpawn spawnParent;
+
     private void Start()
     {
         bndCheck = GetComponent<BoundsCheck>();
@@ -76,7 +78,7 @@ public class Enemy : MonoBehaviour
     public void destroyThis()
     {
         transform.position = transform.root.transform.position;
-        transform.root.GetComponent<enemyShipSpawn>().shipOut = false;
+        spawnParent.shipOut = false;
         bndCheck.offDown = false;
 
         gameObject.SetActive(false);
