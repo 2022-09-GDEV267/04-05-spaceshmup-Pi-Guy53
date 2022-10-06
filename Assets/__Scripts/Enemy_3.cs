@@ -10,6 +10,7 @@ public class Enemy_3 : Enemy
     private float birthTime;
 
     private float u;
+    private Vector3 p01, p12;
 
     private void Start()
     {
@@ -43,6 +44,10 @@ public class Enemy_3 : Enemy
             return;
         }
 
+        u = u - .2f * Mathf.Sin(u * Mathf.PI * 2);
+        p01 = (1 - u) * points[0] + u * points[1];
+        p12 = (1 - u) * points[1] + u * points[2];
+        pos = (1 - u) * p01 + u * p12;
 
     }
 }
