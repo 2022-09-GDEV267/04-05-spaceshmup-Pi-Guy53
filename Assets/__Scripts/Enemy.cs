@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public float health = 10;
     public int score;
 
-    private BoundsCheck bndCheck;
+    protected BoundsCheck bndCheck;
 
     [Header("Set Dynamically: Enemy")]
     bool placeholder2; // here to keep VS from freaking out - DELETE IT
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
 
         if (bndCheck != null && bndCheck.offDown)
         {
-            destroyThis();
+            Destroy(gameObject);
         }
     }
 
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
         if(coll.gameObject.CompareTag("ProjectileHero"))
         {
             Destroy(coll.gameObject);
-            destroyThis();
+            Destroy(gameObject);
         }
     }
 
@@ -73,14 +73,5 @@ public class Enemy : MonoBehaviour
     void UnShowDamage()
     {
 
-    }
-
-    public void destroyThis()
-    {
-        transform.position = transform.root.transform.position;
-        spawnParent.shipOut = false;
-        bndCheck.offDown = false;
-
-        gameObject.SetActive(false);
     }
 }

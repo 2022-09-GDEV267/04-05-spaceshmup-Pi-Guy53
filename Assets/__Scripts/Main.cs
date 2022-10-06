@@ -32,7 +32,8 @@ public class Main : MonoBehaviour
     public void SpawnEnemy()
     {
         ndx = Random.Range(0, prefabEnemies.Length);
-        GameObject go = objPool.S.getEnemyShip(ndx);
+
+        GameObject go = Instantiate(prefabEnemies[ndx]);
 
         currentPadding = enemyDefaultPadding;
         if (go.GetComponent<BoundsCheck>())
