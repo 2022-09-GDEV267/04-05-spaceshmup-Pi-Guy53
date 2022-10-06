@@ -29,8 +29,6 @@ public class Projectile : MonoBehaviour
         bndCheck = GetComponent<BoundsCheck>();
         rend = GetComponent<Renderer>();
         rb = GetComponent<Rigidbody>();
-
-        print(rend);
     }
 
     private void Update()
