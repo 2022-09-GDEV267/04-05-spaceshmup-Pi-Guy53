@@ -24,6 +24,8 @@ public class Hero : MonoBehaviour {
     public GameObject projectile;
     public float projectileSpeed = 40;
 
+    public delegate void WeaponFireDelegate();
+    public WeaponFireDelegate fireDelegate;
     private void Awake()
     {
         if(S == null)
@@ -34,14 +36,16 @@ public class Hero : MonoBehaviour {
         {
             Debug.LogError("Hero.Awake() - Attempted to assign a second Hero.S!");
         }
+
+        fireDelegate += TempFire;
     }
 
     void Start()
     {
 
     }
-	
-	void Update()
+
+    void Update()
     {
         xAxis = Input.GetAxis("Horizontal");
         yAxis = Input.GetAxis("Vertical");
@@ -54,9 +58,9 @@ public class Hero : MonoBehaviour {
 
         transform.rotation = Quaternion.Euler(yAxis * pitchMulti, xAxis * rollMulti, 0);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetAxis("Jump") == 1 && fireDelegate != null)
         {
-            TempFire();
+            fireDelegate();
         }
     }
 
@@ -64,7 +68,10 @@ public class Hero : MonoBehaviour {
     {
         GameObject projGo = Instantiate(projectile);
         projGo.transform.position = transform.position;
-        projGo.GetComponent<Rigidbody>().velocity = Vector3.up * projectileSpeed;
+
+        Projectile proj = projGo.GetComponent<Projectile>();
+        proj.type = WeaponType.blaster;
+        projGo.GetComponent<Rigidbody>().velocity = Vector3.up * Main.GetWeaponDefinition(proj.type).velocity;
     }
 
     private void OnTriggerEnter(Collider other)

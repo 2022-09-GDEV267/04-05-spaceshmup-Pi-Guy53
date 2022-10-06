@@ -11,7 +11,7 @@ public class Enemy_1 : Enemy
     private float x0;
     private float birthTime;
 
-    private Vector3 tempPos, rot;
+    private Vector3 tPos, rot;
     float age, theta, sin;
 
     private void Start()
@@ -23,15 +23,16 @@ public class Enemy_1 : Enemy
 
     public override void Move()
     {
-        tempPos = pos;
+        tPos = pos;
         age = Time.time - birthTime;
-        theta = Mathf.PI * 8 * age / waveFrequency;
+        theta = Mathf.PI * 2 * age / waveFrequency;
         sin = Mathf.Sin(theta);
 
-        tempPos.x = x0 + waveWidth * sin;
-        pos = tempPos;
+        tPos.x = x0 + waveWidth * sin;
+        pos = tPos;
 
         rot = new Vector3(0, sin * waveRotY, 0);
+        transform.rotation = Quaternion.Euler(rot);
 
         base.Move();
     }

@@ -205,8 +205,9 @@ GameObject:
   - component: {fileID: 4327533348366732}
   - component: {fileID: 54819850134869132}
   - component: {fileID: 114823051784247002}
+  - component: {fileID: 4502636348565524761}
   m_Layer: 9
-  m_Name: Enemy_1
+  m_Name: enemy_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,3 +267,23 @@ MonoBehaviour:
   offLeft: 0
   offUp: 0
   offDown: 0
+--- !u!114 &4502636348565524761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801717105832950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1284206679564b0459fc0cee9140530d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  fireRate: 0.3
+  health: 10
+  score: 0
+  spawnParent: {fileID: 0}
+  waveFrequency: 2
+  waveWidth: 4
+  waveRotY: 45

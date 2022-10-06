@@ -20,10 +20,9 @@ public class Enemy : MonoBehaviour
 
     public enemyShipSpawn spawnParent;
 
-    private void Start()
+    private void Awake()
     {
         bndCheck = GetComponent<BoundsCheck>();
-        bndCheck.keepOnScreen = false;
     }
 
     // This is a property: A method that acts like a field
