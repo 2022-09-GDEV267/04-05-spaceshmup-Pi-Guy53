@@ -80,8 +80,7 @@ public class Hero : MonoBehaviour {
         if(go.CompareTag("Enemy"))
         {
             shieldLevel--;
-
-            go.GetComponent<Enemy>().destroyThis();
+            Destroy(go);
         }
 
     }

@@ -12,6 +12,10 @@ public class Main : MonoBehaviour
     public float enemySpawnPerSecond = .5f;
     public float enemyDefaultPadding = 1.5f;
 
+    public WeaponDefinition[] weaponDefinitions;
+
+    static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
+
     private BoundsCheck bndCheck;
 
     private int ndx;
@@ -20,6 +24,11 @@ public class Main : MonoBehaviour
     private void Awake()
     {
         S = this;
+        WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>();
+        foreach(WeaponDefinition def in weaponDefinitions)
+        {
+            WEAP_DICT[def.type] = def;
+        }
     }
 
     private void Start()
@@ -56,4 +65,14 @@ public class Main : MonoBehaviour
         SceneManager.LoadScene("_Scene_0");
     }
     
+    public static WeaponDefinition GetWeaponDefinition(WeaponType wt)
+    {
+        if(WEAP_DICT.ContainsKey(wt))
+        {
+            return WEAP_DICT[wt];
+        }
+
+        return new WeaponDefinition();
+    }
+
 }
