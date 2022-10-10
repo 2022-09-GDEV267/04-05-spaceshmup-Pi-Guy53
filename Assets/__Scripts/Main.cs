@@ -45,6 +45,7 @@ public class Main : MonoBehaviour
         GameObject go = Instantiate(prefabEnemies[ndx]);
 
         currentPadding = enemyDefaultPadding;
+
         if (go.GetComponent<BoundsCheck>())
         {
             currentPadding = Mathf.Abs(go.GetComponent<BoundsCheck>().radius);

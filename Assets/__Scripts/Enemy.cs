@@ -79,11 +79,11 @@ public class Enemy : MonoBehaviour
         if (otherGO.tag == "ProjectileHero")
         {
             Projectile p = otherGO.GetComponent<Projectile>();
-            //if (!bndCheck.isOnScreen)
-            //{
-            //    Destroy(otherGO);
-            //    return;
-            //}
+            if (!bndCheck.isOnScreen)
+            {
+                Destroy(otherGO);
+                return;
+            }
 
             ShowDamage();
 
