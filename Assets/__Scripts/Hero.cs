@@ -43,6 +43,7 @@ public class Hero : MonoBehaviour {
 
     void Start()
     {
+        ClearWeapons();
         weapons[0].type = WeaponType.blaster;
     }
 
