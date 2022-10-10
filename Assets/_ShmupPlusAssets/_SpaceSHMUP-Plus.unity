@@ -1386,7 +1386,7 @@ GameObject:
   - component: {fileID: 5052545208486606298}
   m_Layer: 0
   m_Name: Weapon_2
-  m_TagString: Untagged
+  m_TagString: playerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1403,7 +1403,7 @@ GameObject:
   - component: {fileID: 5052545208188195301}
   m_Layer: 0
   m_Name: Weapon_1
-  m_TagString: Untagged
+  m_TagString: playerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1420,7 +1420,7 @@ GameObject:
   - component: {fileID: 5052545207152687602}
   m_Layer: 0
   m_Name: Weapon_0
-  m_TagString: Untagged
+  m_TagString: playerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1437,7 +1437,7 @@ GameObject:
   - component: {fileID: 5052545206663130352}
   m_Layer: 0
   m_Name: Weapon_4
-  m_TagString: Untagged
+  m_TagString: playerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1454,7 +1454,7 @@ GameObject:
   - component: {fileID: 5052545206646999148}
   m_Layer: 0
   m_Name: Weapon_3
-  m_TagString: Untagged
+  m_TagString: playerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

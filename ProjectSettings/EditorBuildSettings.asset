@@ -5,10 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/_Scene_0.unity
-    guid: 4b6cfbec12cf9354a8704bc7ecc53f0a
+    path: Assets/_ShmupPlusAssets/_SpaceSHMUP-Plus.unity
+    guid: a9476995647cf8a48b7401f45cf189ca
   m_configObjects: {}

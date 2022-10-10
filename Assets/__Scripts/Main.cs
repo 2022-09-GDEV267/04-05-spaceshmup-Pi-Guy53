@@ -81,7 +81,7 @@ public class Main : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("_Scene_0");
+        SceneManager.LoadScene("_SpaceSHMUP-Plus");
     }
     
     public static WeaponDefinition GetWeaponDefinition(WeaponType wt)
