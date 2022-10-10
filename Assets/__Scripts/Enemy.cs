@@ -75,29 +75,26 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision coll)
     {
         GameObject otherGO = coll.gameObject;
-        switch (otherGO.tag)
+
+        if (otherGO.tag == "ProjectileHero")
         {
-            case "ProjectileHero":
-                Projectile p = otherGO.GetComponent<Projectile>();
-                if (!bndCheck.isOnScreen)
-                {
-                    Destroy(otherGO);
-                    break;
-                }
+            Projectile p = otherGO.GetComponent<Projectile>();
+            //if (!bndCheck.isOnScreen)
+            //{
+            //    Destroy(otherGO);
+            //    return;
+            //}
 
-                ShowDamage();
+            ShowDamage();
 
-                health -= Main.GetWeaponDefinition(p.type).damage;
+            health -= Main.GetWeaponDefinition(p.type).damage;
 
-                if(health <=0)
-                {
-                    Destroy(gameObject);
-                }
-                Destroy(otherGO);
-                break;
-
-            default:
-                break;
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+            Destroy(otherGO);
+            return;
         }
     }
 

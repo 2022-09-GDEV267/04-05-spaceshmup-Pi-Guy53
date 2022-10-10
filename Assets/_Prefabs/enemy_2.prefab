@@ -52,7 +52,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 120
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &114288172205974542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +90,12 @@ MonoBehaviour:
   fireRate: 0.3
   health: 10
   score: 0
+  showDamageDuration: 0.1
+  originalColors: []
+  materials: []
+  showingDamage: 0
+  damageDoneTime: 0
+  notifiedOfDestruction: 0
   sinEccentricity: 0.6
   lifeTime: 10
 --- !u!1 &1169661678706308
