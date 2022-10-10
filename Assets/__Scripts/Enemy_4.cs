@@ -197,7 +197,7 @@ namespace ShmupPlus
                     if (allDestroyed) // If it IS completely destroyed...
                     {
                         // ...tell the Main singleton that this ship was destroyed
-//+++++++++++                        Main.S.ShipDestroyed(this);
+                        Main.S.ShipDestroyed(this);
                         // Destroy this Enemy
                         Destroy(this.gameObject);
                     }

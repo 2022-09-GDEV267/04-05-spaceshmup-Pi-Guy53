@@ -16,12 +16,12 @@ public class Enemy : MonoBehaviour
     public float showDamageDuration = .1f;
     public Color[] originalColors;
     public Material[] materials;
+
     public bool showingDamage;
     public float damageDoneTime;
     public bool notifiedOfDestruction = false;
 
-    [Header("Set Dynamically: Enemy")]
-    bool placeholder2; // here to keep VS from freaking out - DELETE IT
+    public float powerUpDropChance;
 
     private Vector3 tempPos;
 
@@ -91,8 +91,15 @@ public class Enemy : MonoBehaviour
 
             if (health <= 0)
             {
+                if(!notifiedOfDestruction)
+                {
+                    Main.S.ShipDestroyed(this);
+                    notifiedOfDestruction = true;
+                }
+
                 Destroy(gameObject);
             }
+
             Destroy(otherGO);
             return;
         }

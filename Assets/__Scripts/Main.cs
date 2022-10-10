@@ -14,6 +14,9 @@ public class Main : MonoBehaviour
 
     public WeaponDefinition[] weaponDefinitions;
 
+    public GameObject prefabPowerUp;
+    public WeaponType[] powerUpFrequency = new WeaponType[] { WeaponType.blaster, WeaponType.blaster, WeaponType.spread, WeaponType.shield };
+
     static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
 
     private BoundsCheck bndCheck;
@@ -36,6 +39,21 @@ public class Main : MonoBehaviour
         bndCheck = GetComponent<BoundsCheck>();
 
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
+    }
+
+    public void ShipDestroyed(Enemy e)
+    {
+        if(Random.value <= e.powerUpDropChance)
+        {
+            WeaponType puType = powerUpFrequency[Random.Range(0, powerUpFrequency.Length)];
+
+            GameObject go = Instantiate(prefabPowerUp);
+            PowerUp pu = go.GetComponent<PowerUp>();
+
+            pu.SetType(puType);
+
+            pu.transform.position = e.transform.position;
+        }
     }
 
     public void SpawnEnemy()

@@ -96,6 +96,7 @@ MonoBehaviour:
   showingDamage: 0
   damageDoneTime: 0
   notifiedOfDestruction: 0
+  powerUpDropChance: 0.25
   sinEccentricity: 0.6
   lifeTime: 10
 --- !u!1 &1169661678706308

@@ -387,4 +387,5 @@ MonoBehaviour:
   showingDamage: 0
   damageDoneTime: 0
   notifiedOfDestruction: 0
+  powerUpDropChance: 0.25
   lifeTime: 5
