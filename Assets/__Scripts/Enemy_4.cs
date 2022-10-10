@@ -95,6 +95,7 @@ namespace ShmupPlus
             }
             return (null);
         }
+
         Part FindPart(GameObject go)
         {
             foreach (Part prt in parts)
@@ -131,8 +132,8 @@ namespace ShmupPlus
         void ShowLocalizedDamage(Material m)
         {
             m.color = Color.red;
-            //damageDoneTime = Time.time + showDamageDuration;
-            //showingDamage = true;
+            damageDoneTime = Time.time + showDamageDuration;
+            showingDamage = true;
         }
 
         // This will override the OnCollisionEnter that is part of Enemy.cs.
@@ -175,7 +176,7 @@ namespace ShmupPlus
 
                     // It's not protected, so make it take damage
                     // Get the damage amount from the Projectile.type and Main.W_DEFS
-//++++++++                    prtHit.health -= Main.GetWeaponDefinition(p.type).damageOnHit;
+                    prtHit.health -= Main.GetWeaponDefinition(p.type).damage;
                     // Show damage on the part
                     ShowLocalizedDamage(prtHit.mat);
                     if (prtHit.health <= 0)
@@ -196,7 +197,7 @@ namespace ShmupPlus
                     if (allDestroyed) // If it IS completely destroyed...
                     {
                         // ...tell the Main singleton that this ship was destroyed
-//++++++++                        Main.S.ShipDestroyed(this);
+//+++++++++++                        Main.S.ShipDestroyed(this);
                         // Destroy this Enemy
                         Destroy(this.gameObject);
                     }

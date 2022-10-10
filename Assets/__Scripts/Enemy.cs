@@ -13,16 +13,28 @@ public class Enemy : MonoBehaviour
 
     protected BoundsCheck bndCheck;
 
+    public float showDamageDuration = .1f;
+    public Color[] originalColors;
+    public Material[] materials;
+    public bool showingDamage;
+    public float damageDoneTime;
+    public bool notifiedOfDestruction = false;
+
     [Header("Set Dynamically: Enemy")]
     bool placeholder2; // here to keep VS from freaking out - DELETE IT
 
     private Vector3 tempPos;
 
-    public enemyShipSpawn spawnParent;
-
     private void Awake()
     {
         bndCheck = GetComponent<BoundsCheck>();
+
+        materials = Utils.GetAllMaterials(gameObject);
+        originalColors = new Color[materials.Length];
+        for(int i =0; i<materials.Length; i++)
+        {
+            originalColors[i] = materials[i].color;
+        }
     }
 
     // This is a property: A method that acts like a field
@@ -42,6 +54,11 @@ public class Enemy : MonoBehaviour
     {
         Move();
 
+        if(showingDamage && Time.time > damageDoneTime)
+        {
+            UnShowDamage();
+        }
+
         if (bndCheck != null && bndCheck.offDown)
         {
             Destroy(gameObject);
@@ -57,20 +74,49 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision coll)
     {
-        if(coll.gameObject.CompareTag("ProjectileHero"))
+        GameObject otherGO = coll.gameObject;
+        switch (otherGO.tag)
         {
-            Destroy(coll.gameObject);
-            Destroy(gameObject);
+            case "ProjectileHero":
+                Projectile p = otherGO.GetComponent<Projectile>();
+                if (!bndCheck.isOnScreen)
+                {
+                    Destroy(otherGO);
+                    break;
+                }
+
+                ShowDamage();
+
+                health -= Main.GetWeaponDefinition(p.type).damage;
+
+                if(health <=0)
+                {
+                    Destroy(gameObject);
+                }
+                Destroy(otherGO);
+                break;
+
+            default:
+                break;
         }
     }
 
     void ShowDamage()
     {
-
+        foreach(Material m in materials)
+        {
+            m.color = Color.red;
+        }
+        showingDamage = true;
+        damageDoneTime = Time.time + showDamageDuration;
     }
 
     void UnShowDamage()
     {
-
+        for(int i = 0; i < materials.Length; i++)
+        {
+            materials[i].color = originalColors[i];
+        }
+        showingDamage = false;
     }
 }

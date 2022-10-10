@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         bndCheck = GetComponent<BoundsCheck>();
         rend = GetComponent<Renderer>();

@@ -26,6 +26,7 @@ public class Hero : MonoBehaviour {
 
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
+
     private void Awake()
     {
         if(S == null)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -357,13 +357,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabEnemies:
   - {fileID: 1864666716847092, guid: a69aa768d15cba34b96a5422e50dc9b4, type: 3}
-  - {fileID: 1864666716847092, guid: a69aa768d15cba34b96a5422e50dc9b4, type: 3}
-  - {fileID: 1864666716847092, guid: a69aa768d15cba34b96a5422e50dc9b4, type: 3}
-  - {fileID: 1801717105832950, guid: cb4206b8e00300649994ecf8ffe838d5, type: 3}
   - {fileID: 1801717105832950, guid: cb4206b8e00300649994ecf8ffe838d5, type: 3}
   - {fileID: 1158547974957732, guid: a0a74b7d2e3ac2449b0e77185af83fed, type: 3}
-  - {fileID: 1158547974957732, guid: a0a74b7d2e3ac2449b0e77185af83fed, type: 3}
-  - {fileID: 1700942416061258, guid: 3f6055558a488314cb38691d88c41fdf, type: 3}
   - {fileID: 1700942416061258, guid: 3f6055558a488314cb38691d88c41fdf, type: 3}
   - {fileID: 1539775467464788, guid: 06677ec088bca734db80dc6ecea1d7af, type: 3}
   enemySpawnPerSecond: 0.5
@@ -372,35 +367,32 @@ MonoBehaviour:
   - type: 1
     letter: B
     color: {r: 1, g: 1, b: 1, a: 1}
-    projectilePrefab: {fileID: 1899541879965282, guid: 59a4640edad59f94a87c1d235355cb6a,
+    projectilePref: {fileID: 1899541879965282, guid: 59a4640edad59f94a87c1d235355cb6a,
       type: 3}
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
-    damageOnHit: 1
-    continuousDamage: 0
-    delayBetweenShots: 0.2
+    damage: 1
+    DOTdamge: 0
+    shotDelay: 0.125
     velocity: 50
   - type: 2
     letter: S
     color: {r: 0, g: 0.65676546, b: 1, a: 1}
-    projectilePrefab: {fileID: 1899541879965282, guid: 59a4640edad59f94a87c1d235355cb6a,
+    projectilePref: {fileID: 1899541879965282, guid: 59a4640edad59f94a87c1d235355cb6a,
       type: 3}
     projectileColor: {r: 0, g: 0.654902, b: 1, a: 1}
-    damageOnHit: 1
-    continuousDamage: 0
-    delayBetweenShots: 0.4
+    damage: 1
+    DOTdamge: 0
+    shotDelay: 0.5
     velocity: 50
   - type: 6
     letter: O
     color: {r: 0, g: 1, b: 0.024693727, a: 1}
-    projectilePrefab: {fileID: 0}
+    projectilePref: {fileID: 0}
     projectileColor: {r: 0, g: 1, b: 0.02745098, a: 1}
-    damageOnHit: 0
-    continuousDamage: 0
-    delayBetweenShots: 0
+    damage: 0
+    DOTdamge: 0
+    shotDelay: 0
     velocity: 0
-  prefabPowerUp: {fileID: 1062273549804748, guid: 9649a9a79085a854d9990613a980f435,
-    type: 3}
-  powerUpFrequency: 01000000010000000200000006000000
 --- !u!20 &282840813
 Camera:
   m_ObjectHideFlags: 0
@@ -473,9 +465,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 1
   keepOnScreen: 0
-  isOnScreen: 1
   camWidth: 0
   camHeight: 0
+  isOnScreen: 1
   offRight: 0
   offLeft: 0
   offUp: 0
@@ -620,26 +612,45 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114684557380802588, guid: d38b8bdef6bb4724e9a7341bda0aad27, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d38b8bdef6bb4724e9a7341bda0aad27, type: 3}
---- !u!114 &494030672 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114684557380802588, guid: d38b8bdef6bb4724e9a7341bda0aad27,
+--- !u!1 &494030672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1848849993518404, guid: d38b8bdef6bb4724e9a7341bda0aad27,
     type: 3}
   m_PrefabInstance: {fileID: 494030671}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4ce925c64fe0b428015d3d554582fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &494030673 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4052337362685714, guid: d38b8bdef6bb4724e9a7341bda0aad27,
     type: 3}
   m_PrefabInstance: {fileID: 494030671}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &494030674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494030672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89b26e343cc13140b95478713cf75e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  def:
+    type: 0
+    letter: 
+    color: {r: 1, g: 1, b: 1, a: 1}
+    projectilePref: {fileID: 0}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damage: 0
+    DOTdamge: 0
+    shotDelay: 0
+    velocity: 0
+  collar: {fileID: 0}
+  lastShotTime: 0
 --- !u!1001 &511470547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -683,26 +694,45 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114684557380802588, guid: d38b8bdef6bb4724e9a7341bda0aad27, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d38b8bdef6bb4724e9a7341bda0aad27, type: 3}
---- !u!114 &511470548 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114684557380802588, guid: d38b8bdef6bb4724e9a7341bda0aad27,
+--- !u!1 &511470548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1848849993518404, guid: d38b8bdef6bb4724e9a7341bda0aad27,
     type: 3}
   m_PrefabInstance: {fileID: 511470547}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4ce925c64fe0b428015d3d554582fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &511470549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4052337362685714, guid: d38b8bdef6bb4724e9a7341bda0aad27,
     type: 3}
   m_PrefabInstance: {fileID: 511470547}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &511470550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511470548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89b26e343cc13140b95478713cf75e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  def:
+    type: 0
+    letter: 
+    color: {r: 1, g: 1, b: 1, a: 1}
+    projectilePref: {fileID: 0}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damage: 0
+    DOTdamge: 0
+    shotDelay: 0
+    velocity: 0
+  collar: {fileID: 0}
+  lastShotTime: 0
 --- !u!1 &625516129
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,8 +874,15 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114684557380802588, guid: d38b8bdef6bb4724e9a7341bda0aad27, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d38b8bdef6bb4724e9a7341bda0aad27, type: 3}
+--- !u!1 &995000018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1848849993518404, guid: d38b8bdef6bb4724e9a7341bda0aad27,
+    type: 3}
+  m_PrefabInstance: {fileID: 995000017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1127906489
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1073,19 +1110,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  rollMult: -45
-  pitchMult: 30
+  rollMulti: -45
+  pitchMulti: 30
   gameRestartDelay: 2
-  projectilePrefab: {fileID: 1899541879965282, guid: 59a4640edad59f94a87c1d235355cb6a,
-    type: 3}
+  _shieldLevel: 4
+  projectile: {fileID: 0}
   projectileSpeed: 40
-  weapons:
-  - {fileID: 1374778674}
-  - {fileID: 2031523527}
-  - {fileID: 1808560890}
-  - {fileID: 494030672}
-  - {fileID: 511470548}
-  _shieldLevel: 1
 --- !u!4 &1342965580
 Transform:
   m_ObjectHideFlags: 0
@@ -1123,9 +1153,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 4
   keepOnScreen: 1
-  isOnScreen: 1
   camWidth: 0
   camHeight: 0
+  isOnScreen: 1
   offRight: 0
   offLeft: 0
   offUp: 0
@@ -1136,18 +1166,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 995000017}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1374778674 stripped
+--- !u!114 &1374778674
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114684557380802588, guid: d38b8bdef6bb4724e9a7341bda0aad27,
-    type: 3}
-  m_PrefabInstance: {fileID: 995000017}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 995000018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4ce925c64fe0b428015d3d554582fd, type: 3}
+  m_Script: {fileID: 11500000, guid: f89b26e343cc13140b95478713cf75e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  def:
+    type: 1
+    letter: 
+    color: {r: 1, g: 1, b: 1, a: 1}
+    projectilePref: {fileID: 0}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damage: 0
+    DOTdamge: 0
+    shotDelay: 0
+    velocity: 0
+  collar: {fileID: 0}
+  lastShotTime: 0
 --- !u!1001 &1808560889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1191,26 +1233,45 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114684557380802588, guid: d38b8bdef6bb4724e9a7341bda0aad27, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d38b8bdef6bb4724e9a7341bda0aad27, type: 3}
---- !u!114 &1808560890 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114684557380802588, guid: d38b8bdef6bb4724e9a7341bda0aad27,
+--- !u!1 &1808560890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1848849993518404, guid: d38b8bdef6bb4724e9a7341bda0aad27,
     type: 3}
   m_PrefabInstance: {fileID: 1808560889}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4ce925c64fe0b428015d3d554582fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1808560891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4052337362685714, guid: d38b8bdef6bb4724e9a7341bda0aad27,
     type: 3}
   m_PrefabInstance: {fileID: 1808560889}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1808560892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808560890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89b26e343cc13140b95478713cf75e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  def:
+    type: 0
+    letter: 
+    color: {r: 1, g: 1, b: 1, a: 1}
+    projectilePref: {fileID: 0}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damage: 0
+    DOTdamge: 0
+    shotDelay: 0
+    velocity: 0
+  collar: {fileID: 0}
+  lastShotTime: 0
 --- !u!1 &1945160765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,26 +1444,45 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114684557380802588, guid: d38b8bdef6bb4724e9a7341bda0aad27, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d38b8bdef6bb4724e9a7341bda0aad27, type: 3}
---- !u!114 &2031523527 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114684557380802588, guid: d38b8bdef6bb4724e9a7341bda0aad27,
+--- !u!1 &2031523527 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1848849993518404, guid: d38b8bdef6bb4724e9a7341bda0aad27,
     type: 3}
   m_PrefabInstance: {fileID: 2031523526}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4ce925c64fe0b428015d3d554582fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2031523528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4052337362685714, guid: d38b8bdef6bb4724e9a7341bda0aad27,
     type: 3}
   m_PrefabInstance: {fileID: 2031523526}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2031523529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031523527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89b26e343cc13140b95478713cf75e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  def:
+    type: 0
+    letter: 
+    color: {r: 1, g: 1, b: 1, a: 1}
+    projectilePref: {fileID: 0}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damage: 0
+    DOTdamge: 0
+    shotDelay: 0
+    velocity: 0
+  collar: {fileID: 0}
+  lastShotTime: 0
 --- !u!1 &2116799371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,5 +1593,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082a6c0e92121ea418a8b7fb25e4f63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationsPerSecond: 0.1
+  rotationSpeed: 0
   levelShown: 0

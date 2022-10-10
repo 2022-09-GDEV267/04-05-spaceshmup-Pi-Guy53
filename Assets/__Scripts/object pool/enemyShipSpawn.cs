@@ -15,7 +15,6 @@ public class enemyShipSpawn : MonoBehaviour
         {
             ships[i] = Instantiate(Main.S.prefabEnemies[i]);
             //ships[i].transform.parent = transform;
-            ships[i].GetComponent<Enemy>().spawnParent = this;
 
             ships[i].transform.position = transform.position;
             ships[i].SetActive(false);
