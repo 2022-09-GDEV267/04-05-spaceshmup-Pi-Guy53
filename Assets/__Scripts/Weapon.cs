@@ -11,7 +11,8 @@ public enum WeaponType
     missile,
     laser,
     shield,
-    torpedo //possible addition sperate from missile
+    torpedo, //possible addition sperate from missile
+    cannon //high single shot damage
 }
 
 [System.Serializable]
@@ -92,14 +93,30 @@ public class Weapon : MonoBehaviour
 
                 p = MakeProjectile();
                 p.rb.velocity = vel;
-                p.transform.rotation = Quaternion.AngleAxis(10, Vector3.back);
+                p.transform.rotation = Quaternion.AngleAxis(8, Vector3.back);
                 p.rb.velocity = p.transform.rotation * vel;
 
                 p = MakeProjectile();
                 p.rb.velocity = vel;
-                p.transform.rotation = Quaternion.AngleAxis(-10, Vector3.back);
+                p.transform.rotation = Quaternion.AngleAxis(-8, Vector3.back);
+                p.rb.velocity = p.transform.rotation * vel;
+
+                p = MakeProjectile();
+                p.rb.velocity = vel;
+                p.transform.rotation = Quaternion.AngleAxis(16, Vector3.back);
+                p.rb.velocity = p.transform.rotation * vel;
+
+                p = MakeProjectile();
+                p.rb.velocity = vel;
+                p.transform.rotation = Quaternion.AngleAxis(-16, Vector3.back);
                 p.rb.velocity = p.transform.rotation * vel;
                 break;
+
+            case WeaponType.cannon:
+                p = MakeProjectile();
+                p.rb.velocity = vel;
+                break;
+
         }
     }
 
