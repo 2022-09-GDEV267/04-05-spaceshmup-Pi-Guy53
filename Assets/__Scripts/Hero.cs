@@ -166,4 +166,9 @@ public class Hero : MonoBehaviour {
         }
     }
 
+    public Vector2 get2DPos()
+    {
+        return new Vector2(pos.x, pos.y);
+    }
+
 }

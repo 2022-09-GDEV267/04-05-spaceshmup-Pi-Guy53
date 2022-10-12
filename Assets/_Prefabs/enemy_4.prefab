@@ -275,7 +275,7 @@ MonoBehaviour:
   powerUpDropChance: 0.75
   parts:
   - name: Cockpit
-    health: 10
+    health: 5
     protectedBy:
     - Fuselage
     go: {fileID: 0}
