@@ -57,7 +57,8 @@ public class Projectile : MonoBehaviour
         }
         else if(type == WeaponType.missile)
         {
-            trackDirection(target);
+            transform.Rotate(Vector3.forward * trackDirection(target) * 5 * Time.deltaTime);
+
             rb.velocity = transform.up * initialVelocity;
         }
     }
@@ -83,7 +84,21 @@ public class Projectile : MonoBehaviour
 
     float trackDirection(Transform pos)
     {
+        if(Vector3.Angle(transform.position + transform.forward, target.transform.position) > 15)
+        {
+            float anglgeRot = Quaternion.LookRotation(target.transform.position, transform.position).eulerAngles.y;
 
+            print(anglgeRot);
+
+            if (anglgeRot >= 180)
+            {
+                return -1;
+            }
+            else if(anglgeRot < 180)
+            {
+                return 1;
+            }
+        }
 
         return -999;
     }
