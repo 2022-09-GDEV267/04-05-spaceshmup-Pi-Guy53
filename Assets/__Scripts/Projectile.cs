@@ -60,7 +60,7 @@ public class Projectile : MonoBehaviour
         {
             if (target == null)
             {
-                Destroy(gameObject);
+                setTarget();
             }
             else
             {
@@ -84,19 +84,28 @@ public class Projectile : MonoBehaviour
         phaseDirection = phDir;
     }
 
-    public void setUpMissile(float vel, Transform targ)
+    public void setUpMissile(float vel)
     {
         initialVelocity = vel;
-        target = targ;
 
         endTarget = new GameObject("endTarget").transform;
-        endTarget.transform.position = target.transform.position;
+        setTarget();
 
         TrailRenderer tr = gameObject.AddComponent<TrailRenderer>();
         tr.material = rend.material;
         tr.time = .5f;
         tr.startWidth = .5f;
         tr.endWidth = 0;
+    }
+
+    void setTarget()
+    {
+        Enemy[] goList = GameObject.FindObjectsOfType<Enemy>();
+        if (goList.Length > 0)
+        {
+            target = goList[Random.Range(0, goList.Length)].transform;
+            endTarget.transform.position = target.transform.position;
+        }
     }
 
     private void OnDestroy()
