@@ -415,17 +415,17 @@ MonoBehaviour:
     velocity: 50
   - type: 4
     letter: M
-    color: {r: 0, g: 1, b: 0.16342616, a: 1}
+    color: {r: 1, g: 0.5019608, b: 0, a: 1}
     projectilePref: {fileID: 1899541879965282, guid: 59a4640edad59f94a87c1d235355cb6a,
       type: 3}
-    projectileColor: {r: 0, g: 1, b: 0.16470589, a: 1}
+    projectileColor: {r: 1, g: 0.5019608, b: 0, a: 1}
     damage: 5
     DOTdamge: 0
     shotDelay: 0.2
     velocity: 40
   prefabPowerUp: {fileID: 1062273549804748, guid: 9649a9a79085a854d9990613a980f435,
     type: 3}
-  powerUpFrequency: 010000000100000002000000060000000800000003000000
+  powerUpFrequency: 01000000010000000200000006000000080000000300000004000000
 --- !u!20 &282840813
 Camera:
   m_ObjectHideFlags: 0
@@ -3810,7 +3810,6 @@ MonoBehaviour:
     velocity: 0
   collar: {fileID: 0}
   lastShotTime: 0
-  cannonLaser: {fileID: 0}
 --- !u!114 &5052545206663130352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3835,7 +3834,6 @@ MonoBehaviour:
     velocity: 0
   collar: {fileID: 0}
   lastShotTime: 0
-  cannonLaser: {fileID: 0}
 --- !u!114 &5052545207152687602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3860,7 +3858,6 @@ MonoBehaviour:
     velocity: 0
   collar: {fileID: 0}
   lastShotTime: 0
-  cannonLaser: {fileID: 0}
 --- !u!114 &5052545208188195301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3885,7 +3882,6 @@ MonoBehaviour:
     velocity: 0
   collar: {fileID: 0}
   lastShotTime: 0
-  cannonLaser: {fileID: 0}
 --- !u!114 &5052545208486606298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3910,4 +3906,3 @@ MonoBehaviour:
     velocity: 0
   collar: {fileID: 0}
   lastShotTime: 0
-  cannonLaser: {fileID: 0}

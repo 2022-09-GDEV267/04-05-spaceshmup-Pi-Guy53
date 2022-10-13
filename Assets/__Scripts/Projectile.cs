@@ -67,7 +67,6 @@ public class Projectile : MonoBehaviour
                 endTarget.transform.position = Vector3.Lerp(endTarget.transform.position, target.transform.position, .025f);
 
                 rb.velocity = (endTarget.transform.position - transform.position).normalized * initialVelocity;
-                transform.rotation = new Quaternion(0, 0, -Quaternion.LookRotation(endTarget.transform.position - transform.position).z, 0);
             }
         }
     }
@@ -91,6 +90,13 @@ public class Projectile : MonoBehaviour
         target = targ;
 
         endTarget = new GameObject("endTarget").transform;
+        endTarget.transform.position = target.transform.position;
+
+        TrailRenderer tr = gameObject.AddComponent<TrailRenderer>();
+        tr.material = rend.material;
+        tr.time = .5f;
+        tr.startWidth = .5f;
+        tr.endWidth = 0;
     }
 
     private void OnDestroy()
