@@ -41,8 +41,6 @@ public class Weapon : MonoBehaviour
 
     private Renderer collarRend;
 
-    public GameObject cannonLaser;
-
     private void Start()
     {
         collar = transform.Find("Collar").gameObject;
@@ -169,15 +167,6 @@ public class Weapon : MonoBehaviour
         else
         {
             gameObject.SetActive(true);
-        }
-
-        if(type == WeaponType.cannon)
-        {
-            cannonLaser.SetActive(true);
-        }
-        else
-        {
-            cannonLaser.SetActive(false);
         }
 
         def = Main.GetWeaponDefinition(_type);
