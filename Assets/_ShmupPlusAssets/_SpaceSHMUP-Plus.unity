@@ -422,7 +422,7 @@ MonoBehaviour:
     damage: 5
     DOTdamge: 0
     shotDelay: 0.2
-    velocity: 35
+    velocity: 40
   prefabPowerUp: {fileID: 1062273549804748, guid: 9649a9a79085a854d9990613a980f435,
     type: 3}
   powerUpFrequency: 010000000100000002000000060000000800000003000000

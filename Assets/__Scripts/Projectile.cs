@@ -20,6 +20,7 @@ public class Projectile : MonoBehaviour
 
     //missile
     Transform target;
+    Transform endTarget;
 
     public WeaponType type
     {
@@ -48,18 +49,26 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(type == WeaponType.phaser)
+        if (type == WeaponType.phaser)
         {
             t += Time.deltaTime * 15;
             sin = (Mathf.Sin(t) * 10);
 
             rb.velocity = (transform.up * initialVelocity) + (transform.right * sin * phaseDirection);
         }
-        else if(type == WeaponType.missile)
+        else if (type == WeaponType.missile)
         {
-            transform.Rotate(Vector3.forward * trackDirection(target) * 5 * Time.deltaTime);
+            if (target == null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                endTarget.transform.position = Vector3.Lerp(endTarget.transform.position, target.transform.position, .025f);
 
-            rb.velocity = transform.up * initialVelocity;
+                rb.velocity = (endTarget.transform.position - transform.position).normalized * initialVelocity;
+                transform.rotation = new Quaternion(0, 0, -Quaternion.LookRotation(endTarget.transform.position - transform.position).z, 0);
+            }
         }
     }
 
@@ -80,26 +89,15 @@ public class Projectile : MonoBehaviour
     {
         initialVelocity = vel;
         target = targ;
+
+        endTarget = new GameObject("endTarget").transform;
     }
 
-    float trackDirection(Transform pos)
+    private void OnDestroy()
     {
-        if(Vector3.Angle(transform.position + transform.forward, target.transform.position) > 15)
+        if (endTarget!=null)
         {
-            float anglgeRot = Quaternion.LookRotation(target.transform.position, transform.position).eulerAngles.y;
-
-            print(anglgeRot);
-
-            if (anglgeRot >= 180)
-            {
-                return -1;
-            }
-            else if(anglgeRot < 180)
-            {
-                return 1;
-            }
+            Destroy(endTarget.gameObject);
         }
-
-        return -999;
     }
 }
