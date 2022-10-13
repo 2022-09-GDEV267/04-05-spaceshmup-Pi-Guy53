@@ -11,6 +11,10 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private WeaponType _type;
 
+    float t, sin;
+    float initialVelocity;
+    int phaseDirection;
+
     public WeaponType type
     {
         get
@@ -37,6 +41,14 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(type == WeaponType.phaser)
+        {
+            t += Time.deltaTime * 15;
+            sin = (Mathf.Sin(t) * 10);
+
+            rb.velocity = (transform.up * initialVelocity) + (transform.right * sin * phaseDirection);
+        }
     }
 
     public void SetType(WeaponType eType)
@@ -44,5 +56,11 @@ public class Projectile : MonoBehaviour
         _type = eType;
         WeaponDefinition def = Main.GetWeaponDefinition(_type);
         rend.material.color = def.projectileColor;
+    }
+
+    public void setPhaserVelocity(float vel, int phDir)
+    {
+        initialVelocity = vel;
+        phaseDirection = phDir;
     }
 }

@@ -117,6 +117,19 @@ public class Weapon : MonoBehaviour
                 p.rb.velocity = vel;
                 break;
 
+            case WeaponType.phaser:
+                p = MakeProjectile();
+                p.rb.velocity = vel;
+                p.setPhaserVelocity(vel.y, 1);
+                p.transform.position = transform.position + transform.right * 1;
+
+                p = MakeProjectile();
+                p.rb.velocity = vel;
+                p.setPhaserVelocity(vel.y, -1);
+                p.transform.position = transform.position - transform.right * 1;
+
+                break;
+
         }
     }
 
