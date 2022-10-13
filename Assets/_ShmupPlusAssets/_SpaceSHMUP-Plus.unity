@@ -419,7 +419,7 @@ MonoBehaviour:
     projectilePref: {fileID: 1899541879965282, guid: 59a4640edad59f94a87c1d235355cb6a,
       type: 3}
     projectileColor: {r: 1, g: 0.5019608, b: 0, a: 1}
-    damage: 5
+    damage: 4
     DOTdamge: 0
     shotDelay: 1
     velocity: 40
