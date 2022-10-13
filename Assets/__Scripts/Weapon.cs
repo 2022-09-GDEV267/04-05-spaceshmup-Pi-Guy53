@@ -130,7 +130,18 @@ public class Weapon : MonoBehaviour
 
                 break;
 
+            case WeaponType.missile:
+                p = MakeProjectile();
+                p.rb.velocity = vel;
+                p.setUpMissile(vel.y, randomTarget());
+                break;
+
         }
+    }
+
+    Transform randomTarget()
+    {
+        return GameObject.FindObjectsOfType<Enemy>()[0].transform;
     }
 
     public WeaponType type

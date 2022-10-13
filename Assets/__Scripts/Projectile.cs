@@ -11,9 +11,15 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private WeaponType _type;
 
-    float t, sin;
+    //any weapon modifing velocity
     float initialVelocity;
+
+    //phaser
+    float t, sin;
     int phaseDirection;
+
+    //missile
+    Transform target;
 
     public WeaponType type
     {
@@ -49,6 +55,11 @@ public class Projectile : MonoBehaviour
 
             rb.velocity = (transform.up * initialVelocity) + (transform.right * sin * phaseDirection);
         }
+        else if(type == WeaponType.missile)
+        {
+            trackDirection(target);
+            rb.velocity = transform.up * initialVelocity;
+        }
     }
 
     public void SetType(WeaponType eType)
@@ -62,5 +73,18 @@ public class Projectile : MonoBehaviour
     {
         initialVelocity = vel;
         phaseDirection = phDir;
+    }
+
+    public void setUpMissile(float vel, Transform targ)
+    {
+        initialVelocity = vel;
+        target = targ;
+    }
+
+    float trackDirection(Transform pos)
+    {
+
+
+        return -999;
     }
 }

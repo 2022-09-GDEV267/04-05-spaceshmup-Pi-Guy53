@@ -413,6 +413,16 @@ MonoBehaviour:
     DOTdamge: 0
     shotDelay: 0.2
     velocity: 50
+  - type: 4
+    letter: M
+    color: {r: 0, g: 1, b: 0.16342616, a: 1}
+    projectilePref: {fileID: 1899541879965282, guid: 59a4640edad59f94a87c1d235355cb6a,
+      type: 3}
+    projectileColor: {r: 0, g: 1, b: 0.16470589, a: 1}
+    damage: 5
+    DOTdamge: 0
+    shotDelay: 0.2
+    velocity: 35
   prefabPowerUp: {fileID: 1062273549804748, guid: 9649a9a79085a854d9990613a980f435,
     type: 3}
   powerUpFrequency: 010000000100000002000000060000000800000003000000
