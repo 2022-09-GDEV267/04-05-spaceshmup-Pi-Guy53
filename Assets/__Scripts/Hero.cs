@@ -44,7 +44,7 @@ public class Hero : MonoBehaviour {
     void Start()
     {
         ClearWeapons();
-        weapons[0].type = WeaponType.missile;
+        weapons[0].type = WeaponType.laser;
     }
 
     void Update()

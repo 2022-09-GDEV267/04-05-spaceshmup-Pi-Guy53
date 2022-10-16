@@ -133,7 +133,13 @@ public class Weapon : MonoBehaviour
             case WeaponType.missile:
                 p = MakeProjectile();
                 p.rb.velocity = vel;
-                p.setUpMissile(vel.y);
+                p.setUpMissile(vel.y, this);
+                break;
+
+            case WeaponType.laser:
+                p = MakeProjectile();
+                p.rb.velocity = vel;
+                p.setLaser(def.DOTdamge);
                 break;
 
         }
@@ -190,6 +196,29 @@ public class Weapon : MonoBehaviour
         p.type = def.type;
 
         lastShotTime = Time.time;
+
+        return p;
+    }
+
+    public Projectile explodeProjectile()
+    {
+        GameObject go = Instantiate(def.projectilePref);
+
+        if (transform.parent.gameObject.CompareTag("Hero"))
+        {
+            go.tag = "ProjectileHero";
+            go.layer = LayerMask.NameToLayer("ProjectileHero");
+        }
+        else
+        {
+            go.tag = "ProjectileEnemy";
+            go.layer = LayerMask.NameToLayer("ProjectileEnemy");
+        }
+
+        go.transform.SetParent(PROJECTILE_ANCHOR, true);
+        Projectile p = go.GetComponent<Projectile>();
+
+        p.type = WeaponType.blaster;
 
         return p;
     }

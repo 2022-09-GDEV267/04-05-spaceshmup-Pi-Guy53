@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
 
         materials = Utils.GetAllMaterials(gameObject);
         originalColors = new Color[materials.Length];
-        for(int i =0; i<materials.Length; i++)
+        for (int i = 0; i < materials.Length; i++)
         {
             originalColors[i] = materials[i].color;
         }
@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
     {
         Move();
 
-        if(showingDamage && Time.time > damageDoneTime)
+        if (showingDamage && Time.time > damageDoneTime)
         {
             UnShowDamage();
         }
@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
 
             if (health <= 0)
             {
-                if(!notifiedOfDestruction)
+                if (!notifiedOfDestruction)
                 {
                     Main.S.ShipDestroyed(this);
                     notifiedOfDestruction = true;
@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
 
     void ShowDamage()
     {
-        foreach(Material m in materials)
+        foreach (Material m in materials)
         {
             m.color = Color.red;
         }
@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
 
     void UnShowDamage()
     {
-        for(int i = 0; i < materials.Length; i++)
+        for (int i = 0; i < materials.Length; i++)
         {
             materials[i].color = originalColors[i];
         }
