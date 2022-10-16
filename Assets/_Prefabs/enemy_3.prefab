@@ -378,10 +378,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1116f2553f67ce48ac5dad935fbc0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  fireRate: 1
+  speed: 6
+  fireRate: 2
+  weaponJamChance: 0.5
   health: 10
-  score: 0
+  score: 100
   weapons:
   - {fileID: 6391184553540506151}
   weaponType: 8

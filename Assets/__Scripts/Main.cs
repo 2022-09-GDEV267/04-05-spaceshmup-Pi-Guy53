@@ -24,6 +24,10 @@ public class Main : MonoBehaviour
     private int ndx;
     private float currentPadding;
 
+    private int e4Count = 0;
+    public int maxEnemy4s;
+    public int enemy4Int;
+
     private void Awake()
     {
         S = this;

@@ -88,8 +88,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fireRate: 0.3
+  weaponJamChance: 0.2
   health: 10
-  score: 0
+  score: 100
+  weapons: []
+  weaponType: 0
   showDamageDuration: 0.1
   originalColors: []
   materials: []

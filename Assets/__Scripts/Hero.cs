@@ -28,9 +28,6 @@ public class Hero : MonoBehaviour {
     float xAxis, yAxis;
     Vector3 pos;
 
-    public GameObject projectile;
-    public float projectileSpeed = 40;
-
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
 
@@ -79,16 +76,6 @@ public class Hero : MonoBehaviour {
         shieldDamageImg.transform.parent.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
-    void TempFire()
-    {
-        GameObject projGo = Instantiate(projectile);
-        projGo.transform.position = transform.position;
-
-        Projectile proj = projGo.GetComponent<Projectile>();
-        proj.type = WeaponType.blaster;
-        projGo.GetComponent<Rigidbody>().velocity = Vector3.up * Main.GetWeaponDefinition(proj.type).velocity;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         GameObject go = other.gameObject.transform.root.gameObject;
@@ -133,12 +120,6 @@ public class Hero : MonoBehaviour {
         shieldFlash.SetActive(false);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        GameObject go = collision.gameObject;
-
-    }
-
     public void AbsorbPowerUp(GameObject go)
     {
         PowerUp pu = go.GetComponent<PowerUp>();
@@ -147,6 +128,7 @@ public class Hero : MonoBehaviour {
         {
             case WeaponType.shield:
                 shieldLevel++;
+                shieldDamage = 0;
                 break;
 
             default:

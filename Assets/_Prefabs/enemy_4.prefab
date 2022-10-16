@@ -165,14 +165,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  fireRate: 0.2
-  weaponJamChance: 0.2
+  fireRate: 0.5
+  weaponJamChance: 0.3
   health: 10
-  score: 100
+  score: 200
   weapons:
   - {fileID: 9117199906117833979}
   - {fileID: 6025941019346369758}
-  weaponType: 1
+  weaponType: 3
   showDamageDuration: 0.1
   originalColors: []
   materials: []
