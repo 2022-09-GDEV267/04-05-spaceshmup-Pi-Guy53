@@ -21,6 +21,7 @@ public class Hero : MonoBehaviour {
     public float shieldStrength; //the amount of damage the shield can take before dropping one level;
     private float shieldDamage;
     public Image shieldDamageImg;
+    public GameObject shieldFlash;
 
     private GameObject lastTriggerGo = null;
 
@@ -50,7 +51,9 @@ public class Hero : MonoBehaviour {
     void Start()
     {
         ClearWeapons();
-        weapons[0].type = WeaponType.laser;
+        weapons[0].type = WeaponType.blaster;
+
+        shieldFlash.SetActive(false);
     }
 
     void Update()
@@ -116,10 +119,18 @@ public class Hero : MonoBehaviour {
             {
                 shieldLevel--;
                 shieldDamage = 0;
+
+                shieldFlash.SetActive(true);
+                Invoke("endFlash", .25f);
             }
 
             lastTriggerGo = other.gameObject;
         }
+    }
+
+    void endFlash()
+    {
+        shieldFlash.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
