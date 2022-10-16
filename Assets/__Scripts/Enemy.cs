@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public float health = 10;
     public int score;
 
-    public Weapon weapon;
+    public Weapon[] weapons;
     public WeaponType weaponType;
 
     protected BoundsCheck bndCheck;
@@ -44,9 +44,9 @@ public class Enemy : MonoBehaviour
 
     void setWeapon()
     {
-        if(weapon!=null)
+        for (int i = 0; i < weapons.Length; i++)
         {
-            weapon.type = weaponType;
+            weapons[i].type = weaponType;
         }
     }
 
@@ -77,9 +77,9 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(weapon!= null)
+        for (int i = 0; i < weapons.Length; i++)
         {
-            weapon.Fire();
+            weapons[i].Fire();
         }
     }
 

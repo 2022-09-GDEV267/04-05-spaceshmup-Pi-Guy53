@@ -67,7 +67,14 @@ public class Projectile : MonoBehaviour
             }
             else
             {
-                rb.velocity = (target.transform.position - transform.position).normalized * initialVelocity;
+                if (CompareTag("ProjectileEnemy"))
+                {
+                    rb.velocity = (target.transform.position - transform.position).normalized * initialVelocity;
+                }
+                else
+                {
+                    rb.velocity = (target.transform.position - transform.position).normalized * initialVelocity;
+                }
             }
         }
     }
@@ -113,10 +120,20 @@ public class Projectile : MonoBehaviour
 
     void setTarget()
     {
-        Enemy[] goList = GameObject.FindObjectsOfType<Enemy>();
-        if (goList.Length > 0)
+        if (gameObject.CompareTag("ProjectileEnemy"))
         {
-            target = goList[Random.Range(0, goList.Length)].transform;
+            if (GameObject.FindGameObjectWithTag("Hero") != null)
+            {
+                target = GameObject.FindGameObjectWithTag("Hero").transform;
+            }
+        }
+        else
+        {
+            Enemy[] goList = GameObject.FindObjectsOfType<Enemy>();
+            if (goList.Length > 0)
+            {
+                target = goList[Random.Range(0, goList.Length)].transform;
+            }
         }
     }
 
@@ -128,15 +145,17 @@ public class Projectile : MonoBehaviour
 
             for(int i = 0; i < explosionShots; i++)
             {
-                Projectile p = firingWeapon.explodeProjectile();
-                p.type = WeaponType.blaster;
-                p.transform.position = transform.position;
-                p.transform.rotation = Quaternion.Euler(0, 0, (360 / explosionShots) * i);
-                p.transform.position += p.transform.up * 5;
+                if (firingWeapon != null)
+                {
+                    Projectile p = firingWeapon.explodeProjectile();
+                    p.type = WeaponType.blaster;
+                    p.transform.position = transform.position;
+                    p.transform.rotation = Quaternion.Euler(0, 0, (360 / explosionShots) * i);
+                    p.transform.position += p.transform.up * 5;
 
-                p.rb.velocity = p.transform.up * 40;
-
-                Destroy(p.gameObject, .25f);
+                    p.rb.velocity = p.transform.up * 40;
+                    Destroy(p.gameObject, .25f);
+                }
             }
         }
     }

@@ -113,8 +113,6 @@ public class Hero : MonoBehaviour {
             }
 
             lastTriggerGo = other.gameObject;
-
-            print(shieldDamage);
         }
     }
 
