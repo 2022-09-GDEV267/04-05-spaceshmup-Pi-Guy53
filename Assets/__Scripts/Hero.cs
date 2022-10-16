@@ -17,6 +17,8 @@ public class Hero : MonoBehaviour {
     [Header("Set Dynamically")]
     [SerializeField]
     private float _shieldLevel = 4;
+    public float shieldStrength; //the amount of damage the shield can take before dropping one level;
+    private float shieldDamage;
 
     private GameObject lastTriggerGo = null;
 
@@ -39,12 +41,14 @@ public class Hero : MonoBehaviour {
         {
             Debug.LogError("Hero.Awake() - Attempted to assign a second Hero.S!");
         }
+
+        shieldDamage = 0;
     }
 
     void Start()
     {
         ClearWeapons();
-        weapons[0].type = WeaponType.laser;
+        weapons[0].type = WeaponType.missile;
     }
 
     void Update()
@@ -79,6 +83,7 @@ public class Hero : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         GameObject go = other.gameObject.transform.root.gameObject;
+
         if(go == lastTriggerGo)
         {
             return;
@@ -86,15 +91,36 @@ public class Hero : MonoBehaviour {
 
         lastTriggerGo = go;
 
-        if(go.CompareTag("Enemy"))
+        if (go.CompareTag("Enemy"))
         {
             shieldLevel--;
             Destroy(go);
         }
-        else if(go.CompareTag("PowerUp"))
+        else if (go.CompareTag("PowerUp"))
         {
             AbsorbPowerUp(go);
         }
+        else if (other.CompareTag("ProjectileEnemy")) //using other directly to bypass the fact that a projectiles root is the projectile anchor
+        {
+            shieldDamage += Main.GetWeaponDefinition(other.GetComponent<Projectile>().type).damage;
+
+            Destroy(other.gameObject);
+
+            if (shieldDamage >= shieldStrength)
+            {
+                shieldLevel--;
+                shieldDamage = 0;
+            }
+
+            lastTriggerGo = other.gameObject;
+
+            print(shieldDamage);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject go = collision.gameObject;
 
     }
 

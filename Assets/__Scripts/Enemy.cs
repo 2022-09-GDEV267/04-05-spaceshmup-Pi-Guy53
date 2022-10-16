@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
     public float health = 10;
     public int score;
 
+    public Weapon weapon;
+    public WeaponType weaponType;
+
     protected BoundsCheck bndCheck;
 
     public float showDamageDuration = .1f;
@@ -34,6 +37,16 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < materials.Length; i++)
         {
             originalColors[i] = materials[i].color;
+        }
+
+        Invoke("setWeapon", fireRate);
+    }
+
+    void setWeapon()
+    {
+        if(weapon!=null)
+        {
+            weapon.type = weaponType;
         }
     }
 
@@ -62,6 +75,11 @@ public class Enemy : MonoBehaviour
         if (bndCheck != null && bndCheck.offDown)
         {
             Destroy(gameObject);
+        }
+
+        if(weapon!= null)
+        {
+            weapon.Fire();
         }
     }
 

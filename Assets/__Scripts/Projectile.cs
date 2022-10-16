@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if (bndCheck.offUp)
+        if (bndCheck.offUp || bndCheck.offDown)
         {
             Destroy(gameObject);
         }

@@ -2942,6 +2942,7 @@ MonoBehaviour:
   - {fileID: 5052545206646999148}
   - {fileID: 5052545206663130352}
   _shieldLevel: 4
+  shieldStrength: 5
   projectile: {fileID: 0}
   projectileSpeed: 40
 --- !u!4 &1342965580
