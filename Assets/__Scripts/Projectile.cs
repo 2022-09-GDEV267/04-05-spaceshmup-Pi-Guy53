@@ -64,9 +64,9 @@ public class Projectile : MonoBehaviour
             }
             else
             {
-                endTarget.transform.position = Vector3.Lerp(endTarget.transform.position, target.transform.position, .025f);
+                //endTarget.transform.position = Vector3.Lerp(endTarget.transform.position + (target.transform.position - endTarget.transform.position).normalized * 5, target.transform.position, .025f);
 
-                rb.velocity = (endTarget.transform.position - transform.position).normalized * initialVelocity;
+                rb.velocity = (target.transform.position - transform.position).normalized * initialVelocity;
             }
         }
     }
@@ -96,6 +96,8 @@ public class Projectile : MonoBehaviour
         tr.time = .5f;
         tr.startWidth = .5f;
         tr.endWidth = 0;
+
+        Destroy(gameObject, 3);
     }
 
     void setTarget()
