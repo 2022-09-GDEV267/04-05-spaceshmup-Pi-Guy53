@@ -281,7 +281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  fireRate: 1.5
+  fireRate: 0.2
+  weaponJamChance: 0.2
   health: 10
   score: 0
   weapons:

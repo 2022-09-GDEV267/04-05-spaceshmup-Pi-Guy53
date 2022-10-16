@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [Header("Set in Inspector: Enemy")]
     public float speed = 10f;
     public float fireRate = 0.3f;
+    public float weaponJamChance = .2f;
     public float health = 10;
     public int score;
 
@@ -27,6 +28,8 @@ public class Enemy : MonoBehaviour
     public float powerUpDropChance;
 
     private Vector3 tempPos;
+
+    private bool canFire;
 
     private void Awake()
     {
@@ -48,6 +51,8 @@ public class Enemy : MonoBehaviour
         {
             weapons[i].type = weaponType;
         }
+
+        canFire = true;
     }
 
     // This is a property: A method that acts like a field
@@ -77,10 +82,32 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        for (int i = 0; i < weapons.Length; i++)
+        if (canFire)
         {
-            weapons[i].Fire();
+            for (int i = 0; i < weapons.Length; i++)
+            {
+                weapons[i].Fire();
+            }
+
+            canFire = false;
+
+            if (Random.value < weaponJamChance)
+            {
+                CancelInvoke("fireEnd");
+                Invoke("fireEnd", (weaponJamChance * 10) * Mathf.Clamp(Random.value, .25f, 1));
+            }
+            else
+            {
+                CancelInvoke("fireEnd");
+                Invoke("fireEnd", fireRate);
+            }
         }
+    }
+
+    void fireEnd()
+    {
+        CancelInvoke("fireEnd");
+        canFire = true;
     }
 
     public virtual void Move()

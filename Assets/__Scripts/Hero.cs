@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hero : MonoBehaviour {
     static public Hero S; // Singleton
@@ -19,6 +20,7 @@ public class Hero : MonoBehaviour {
     private float _shieldLevel = 4;
     public float shieldStrength; //the amount of damage the shield can take before dropping one level;
     private float shieldDamage;
+    public Image shieldDamageImg;
 
     private GameObject lastTriggerGo = null;
 
@@ -68,6 +70,10 @@ public class Hero : MonoBehaviour {
         {
             fireDelegate();
         }
+
+        shieldDamageImg.fillAmount = (1 / shieldStrength) * shieldDamage;
+
+        shieldDamageImg.transform.parent.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     void TempFire()
