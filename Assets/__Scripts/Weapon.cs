@@ -74,11 +74,14 @@ public class Weapon : MonoBehaviour
         }
 
         Projectile p;
-        Vector3 vel = Vector3.up * def.velocity;
+        Vector3 vel = transform.up * def.velocity;
+
+        /*
         if(transform.up.y < 0)
         {
             vel.y = -vel.y;
         }
+        */
 
         switch(type)
         {
