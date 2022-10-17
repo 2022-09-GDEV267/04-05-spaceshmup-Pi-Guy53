@@ -118,6 +118,7 @@ public class Weapon : MonoBehaviour
             case WeaponType.cannon:
                 p = MakeProjectile();
                 p.rb.velocity = vel;
+                p.setCannon();
                 break;
 
             case WeaponType.phaser:

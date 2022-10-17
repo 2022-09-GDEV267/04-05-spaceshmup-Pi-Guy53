@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
@@ -24,9 +25,11 @@ public class Main : MonoBehaviour
     private int ndx;
     private float currentPadding;
 
-    private int e4Count = 0;
-    public int maxEnemy4s;
-    public int enemy4Int;
+    static public int highScore = 2000;
+    private static int averageScore = 0;
+    private int score;
+    public Text scoreTxt;
+    public Text highScoreTxt;
 
     private void Awake()
     {
@@ -36,6 +39,26 @@ public class Main : MonoBehaviour
         {
             WEAP_DICT[def.type] = def;
         }
+
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highScore = PlayerPrefs.GetInt("HighScore");
+        }
+
+        if (PlayerPrefs.HasKey("AverageScore"))
+        {
+            averageScore = PlayerPrefs.GetInt("AverageScore");
+        }
+
+        PlayerPrefs.SetInt("HighScore", highScore);
+        PlayerPrefs.SetInt("AverageScore", averageScore);
+
+        score = 0;
+
+        scoreTxt.text = "Score: " + score;
+        highScoreTxt.text = "High Score: " + highScore;
+
+        print(averageScore);
     }
 
     private void Start()
@@ -58,6 +81,16 @@ public class Main : MonoBehaviour
 
             pu.transform.position = e.transform.position;
         }
+
+        score += e.score;
+
+        if (score > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+
+        scoreTxt.text = "Score: " + score;
+        highScoreTxt.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
     }
 
     public void SpawnEnemy()
@@ -80,6 +113,9 @@ public class Main : MonoBehaviour
 
     public void DelayedRestart(float delay)
     {
+        averageScore = (averageScore + score) / 2;
+        PlayerPrefs.SetInt("AverageScore", averageScore);
+
         Invoke("Restart", delay);
     }
 
@@ -97,5 +133,4 @@ public class Main : MonoBehaviour
 
         return new WeaponDefinition();
     }
-
 }

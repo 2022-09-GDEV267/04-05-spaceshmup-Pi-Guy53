@@ -92,6 +92,15 @@ public class Projectile : MonoBehaviour
         phaseDirection = phDir;
     }
 
+    public void setCannon()
+    {
+        TrailRenderer tr = gameObject.AddComponent<TrailRenderer>();
+        tr.material = rend.material;
+        tr.time = .125f;
+        tr.startWidth = .5f;
+        tr.endWidth = 0;
+    }
+
     public void setUpMissile(float vel, Weapon fw)
     {
         initialVelocity = vel;
