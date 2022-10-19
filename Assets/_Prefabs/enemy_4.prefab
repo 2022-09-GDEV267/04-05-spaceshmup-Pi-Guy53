@@ -172,7 +172,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 9117199906117833979}
   - {fileID: 6025941019346369758}
-  weaponType: 1
+  weaponType: 5
   showDamageDuration: 0.1
   originalColors: []
   materials: []
