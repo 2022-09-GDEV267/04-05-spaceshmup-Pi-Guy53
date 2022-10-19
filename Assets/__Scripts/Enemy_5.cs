@@ -8,7 +8,7 @@ public class Enemy_5 : Enemy
     public GameObject wingParent;
 
     private Vector3 pos1, pos2;
-    private float timeStart, duration = 4;
+    private float timeStart, duration = 8;
 
     private void Start()
     {
@@ -41,7 +41,7 @@ public class Enemy_5 : Enemy
     {
         pos1 = pos2;
 
-        pos2.x = Random.Range(-bndCheck.camWidth / 2, bndCheck.camWidth / 2);
+        pos2.x = Random.Range((-bndCheck.camWidth / 2) + bndCheck.radius, (bndCheck.camWidth / 2) - bndCheck.radius);
         pos2.y = Random.Range(bndCheck.camHeight / 2, bndCheck.camHeight);
 
         timeStart = Time.time;
