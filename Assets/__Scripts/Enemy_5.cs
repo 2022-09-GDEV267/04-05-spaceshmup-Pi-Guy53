@@ -10,6 +10,8 @@ public class Enemy_5 : Enemy
     private Vector3 pos1, pos2;
     private float timeStart, duration = 8;
 
+    public Weapon explosionWeapon;
+
     private void Start()
     {
         for (int i = 0; i < pieces.Count; i++)
@@ -45,6 +47,24 @@ public class Enemy_5 : Enemy
         pos2.y = Random.Range(bndCheck.camHeight / 2, bndCheck.camHeight);
 
         timeStart = Time.time;
+    }
+
+    [ContextMenu("explosion")]
+    void createExplosion()
+    {
+        int exCount = 16;
+
+        for(int i = 0; i < exCount; i++)
+        {
+            Projectile p = explosionWeapon.explodeProjectile();
+            p.type = WeaponType.laser;
+            p.transform.position = transform.position;
+            p.transform.rotation = Quaternion.Euler(0, 0, (360 / exCount) * i);
+            p.transform.position += p.transform.up * 5;
+
+            p.rb.velocity = p.transform.up * 40;
+            Destroy(p.gameObject, .5f);
+        }
     }
 
     public void wingDestroyed(WingArmor lostWing)

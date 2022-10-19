@@ -31,6 +31,8 @@ public class Hero : MonoBehaviour {
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
 
+    private BoundsCheck bndCheck;
+
     private void Awake()
     {
         if(S == null)
@@ -41,6 +43,8 @@ public class Hero : MonoBehaviour {
         {
             Debug.LogError("Hero.Awake() - Attempted to assign a second Hero.S!");
         }
+
+        bndCheck = GetComponent<BoundsCheck>();
 
         shieldDamage = 0;
     }
@@ -61,6 +65,7 @@ public class Hero : MonoBehaviour {
         pos = transform.position;
         pos.x += xAxis * speed * Time.deltaTime;
         pos.y += yAxis * speed * Time.deltaTime;
+
 
         transform.position = pos;
 
