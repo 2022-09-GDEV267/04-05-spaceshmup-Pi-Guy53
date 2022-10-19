@@ -95,7 +95,10 @@ public class Hero : MonoBehaviour {
         if (go.CompareTag("Enemy"))
         {
             shieldLevel--;
-            Destroy(go);
+            //if () //FIX SELECTOR, SHOULD NOT KILL BOSS (enemy_5)
+            {
+                Destroy(go);
+            }
         }
         else if (go.CompareTag("PowerUp"))
         {
