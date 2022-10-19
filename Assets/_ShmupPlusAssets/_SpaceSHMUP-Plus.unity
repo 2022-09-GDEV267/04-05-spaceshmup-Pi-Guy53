@@ -1578,6 +1578,8 @@ MonoBehaviour:
   - {fileID: 1356775132}
   - {fileID: 1057549874}
   wingParent: {fileID: 1825222522}
+  expChance: 0.0025
+  exRot: 0
   explosionWeapon: {fileID: 1112955296}
 --- !u!4 &383792205
 Transform:
