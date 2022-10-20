@@ -92,7 +92,7 @@ public class Enemy_5 : Enemy
 
         if (otherGO.tag == "ProjectileHero")
         {
-            if (piecesCount <= 0)
+            if (piecesCount == 0)
             {
                 Projectile p = otherGO.GetComponent<Projectile>();
                 if (!bndCheck.isOnScreen)

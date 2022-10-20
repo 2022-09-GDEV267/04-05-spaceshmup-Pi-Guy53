@@ -69,7 +69,6 @@ public class Hero : MonoBehaviour {
         pos.x += xAxis * speed * Time.deltaTime;
         pos.y += yAxis * speed * Time.deltaTime;
 
-
         transform.position = pos;
 
         transform.rotation = Quaternion.Euler(yAxis * pitchMulti, xAxis * rollMulti, 0);
