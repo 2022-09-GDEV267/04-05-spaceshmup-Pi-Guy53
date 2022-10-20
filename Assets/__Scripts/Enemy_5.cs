@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy_5 : Enemy
 {
-    public List<WingArmor> pieces;
+    private List<WingArmor> pieces;
+    public WingArmor[] armorPieces;
     public GameObject wingParent;
 
     private Vector3 pos1, pos2;
@@ -16,9 +17,12 @@ public class Enemy_5 : Enemy
 
     private void Start()
     {
-        for (int i = 0; i < pieces.Count; i++)
+        pieces = new List<WingArmor>();
+
+        for (int i = 0; i < armorPieces.Length; i++)
         {
-            pieces[i].setUp(this);
+            armorPieces[i].setUp(this);
+            pieces.Add(armorPieces[i]);
         }
 
         pos2 = transform.position;
@@ -61,11 +65,10 @@ public class Enemy_5 : Enemy
         }
     }
 
-    [ContextMenu("explosion")]
     void createExplosion()
     {
         int exCount = 20;
-        exRot += 50 * Time.deltaTime;
+        exRot += 3;
 
         for(int i = 0; i < exCount; i++)
         {
@@ -76,7 +79,7 @@ public class Enemy_5 : Enemy
             p.transform.position += p.transform.up * 5;
 
             p.rb.velocity = p.transform.up * 40;
-            Destroy(p.gameObject, .75f);
+            Destroy(p.gameObject, 1.5f);
         }
     }
 
