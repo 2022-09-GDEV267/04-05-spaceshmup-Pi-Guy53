@@ -651,7 +651,7 @@ MonoBehaviour:
   enemyDefaultPadding: 1.5
   bossEnemy: {fileID: 8070442881689079481, guid: d9818e420cf104d52bc7b3ca5e87426a,
     type: 3}
-  scoreToSpawnBoss: 100
+  scoreToSpawnBoss: 1000
   weaponDefinitions:
   - type: 1
     letter: B
@@ -3203,9 +3203,10 @@ MonoBehaviour:
   - {fileID: 5052545206646999148}
   - {fileID: 5052545206663130352}
   _shieldLevel: 4
-  shieldStrength: 6
+  shieldStrength: 8
   shieldDamageImg: {fileID: 1821281881}
   shieldFlash: {fileID: 168810079}
+  shieldRechargeDelay: 2
 --- !u!4 &1342965580
 Transform:
   m_ObjectHideFlags: 0

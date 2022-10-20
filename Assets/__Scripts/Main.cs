@@ -97,7 +97,7 @@ public class Main : MonoBehaviour
             scoreToSpawnBoss *= 2;
         }
 
-        if (averageScore >= scoreToSpawnBoss && !bossDeployed)
+        if (averageScore >= scoreToSpawnBoss && score > scoreToSpawnBoss && !bossDeployed)
         {
             GameObject go = Instantiate(bossEnemy);
 
@@ -117,6 +117,13 @@ public class Main : MonoBehaviour
         if (!bossDeployed)
         {
             ndx = Random.Range(0, prefabEnemies.Length);
+            Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
+        }
+        else
+        {
+            ndx = 2; //send out weak, un armed enemies to give the player something to crash into
+            Invoke("SpawnEnemy", 2f / enemySpawnPerSecond);
+        }
 
             GameObject go = Instantiate(prefabEnemies[ndx]);
 
@@ -128,9 +135,6 @@ public class Main : MonoBehaviour
             }
 
             go.transform.position = new Vector3(Random.Range(-bndCheck.camWidth + currentPadding, bndCheck.camWidth - currentPadding), bndCheck.camHeight + currentPadding, 0);
-        }
-
-        Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
     }
 
     public void DelayedRestart(float delay)

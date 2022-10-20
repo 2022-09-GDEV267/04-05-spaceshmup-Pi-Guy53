@@ -23,6 +23,9 @@ public class Hero : MonoBehaviour {
     public Image shieldDamageImg;
     public GameObject shieldFlash;
 
+    public float shieldRechargeDelay;
+    private float shieldRechareStart;
+
     private GameObject lastTriggerGo = null;
 
     float xAxis, yAxis;
@@ -78,6 +81,11 @@ public class Hero : MonoBehaviour {
 
         shieldDamageImg.fillAmount = (1 / shieldStrength) * shieldDamage;
 
+        if(Time.time > shieldRechareStart && shieldDamage > 0)
+        {
+            shieldDamage -= Time.deltaTime;
+        }
+
         shieldDamageImg.transform.parent.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -95,7 +103,7 @@ public class Hero : MonoBehaviour {
         if (go.CompareTag("Enemy"))
         {
             shieldLevel--;
-            //if () //FIX SELECTOR, SHOULD NOT KILL BOSS (enemy_5)
+            if (!go.GetComponentInChildren<Enemy_5>()) 
             {
                 Destroy(go);
             }
@@ -104,7 +112,7 @@ public class Hero : MonoBehaviour {
         {
             AbsorbPowerUp(go);
         }
-        else if (other.CompareTag("ProjectileEnemy")) //using other directly to bypass the fact that a projectiles root is the projectile anchor
+        else if (other.CompareTag("ProjectileEnemy")) //using 'other' directly to bypass the fact that a projectiles root is the projectile anchor
         {
             shieldDamage += Main.GetWeaponDefinition(other.GetComponent<Projectile>().type).damage;
 
@@ -119,6 +127,7 @@ public class Hero : MonoBehaviour {
                 Invoke("endFlash", .25f);
             }
 
+            shieldRechareStart = Time.time + shieldRechargeDelay;
             lastTriggerGo = other.gameObject;
         }
     }
