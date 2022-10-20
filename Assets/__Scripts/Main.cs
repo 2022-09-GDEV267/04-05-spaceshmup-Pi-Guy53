@@ -34,7 +34,14 @@ public class Main : MonoBehaviour
     private int score;
     public Text scoreTxt;
     public Text highScoreTxt;
+    
+    
+    public float disAverage;//show the average score
 
+    private void Update()
+    {
+        disAverage = PlayerPrefs.GetInt("AverageScore");
+    }
     private void Awake()
     {
         S = this;
@@ -95,6 +102,9 @@ public class Main : MonoBehaviour
         {
             bossDeployed = false;
             scoreToSpawnBoss *= 2;
+
+            averageScore = (averageScore + score) / 2;
+            PlayerPrefs.SetInt("AverageScore", averageScore);
         }
 
         if (averageScore >= scoreToSpawnBoss && score > scoreToSpawnBoss && !bossDeployed)
@@ -102,7 +112,6 @@ public class Main : MonoBehaviour
             GameObject go = Instantiate(bossEnemy);
 
             currentPadding = enemyDefaultPadding;
-
             go.transform.position = new Vector3(Random.Range(-bndCheck.camWidth + currentPadding, bndCheck.camWidth - currentPadding), bndCheck.camHeight + currentPadding, 0);
 
             bossDeployed = true;

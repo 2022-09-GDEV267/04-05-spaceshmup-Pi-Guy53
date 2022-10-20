@@ -651,7 +651,7 @@ MonoBehaviour:
   enemyDefaultPadding: 1.5
   bossEnemy: {fileID: 8070442881689079481, guid: d9818e420cf104d52bc7b3ca5e87426a,
     type: 3}
-  scoreToSpawnBoss: 5000
+  scoreToSpawnBoss: 2000
   weaponDefinitions:
   - type: 1
     letter: B
