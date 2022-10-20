@@ -1269,7 +1269,7 @@ MonoBehaviour:
   fireRate: 1
   weaponJamChance: 0.4
   health: 20
-  score: 100
+  score: 1000
   weapons:
   - {fileID: 3017911007156568639}
   weaponType: 8
