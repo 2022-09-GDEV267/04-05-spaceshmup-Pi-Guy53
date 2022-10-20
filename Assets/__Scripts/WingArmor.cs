@@ -53,7 +53,7 @@ public class WingArmor : MonoBehaviour
 
             if (health <= 0)
             {
-                parentShip.wingDestroyed(this);
+                parentShip.wingDestroyed();
                 Destroy(gameObject);
             }
 

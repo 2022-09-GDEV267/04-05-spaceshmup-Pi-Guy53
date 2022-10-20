@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy_5 : Enemy
 {
-    private List<WingArmor> pieces;
     public WingArmor[] armorPieces;
+    private int piecesCount;
     public GameObject wingParent;
 
     private Vector3 pos1, pos2;
@@ -17,13 +17,11 @@ public class Enemy_5 : Enemy
 
     private void Start()
     {
-        pieces = new List<WingArmor>();
-
         for (int i = 0; i < armorPieces.Length; i++)
         {
             armorPieces[i].setUp(this);
-            pieces.Add(armorPieces[i]);
         }
+        piecesCount = armorPieces.Length;
 
         pos2 = transform.position;
         setMovePoints();
@@ -83,9 +81,9 @@ public class Enemy_5 : Enemy
         }
     }
 
-    public void wingDestroyed(WingArmor lostWing)
+    public void wingDestroyed()
     {
-        pieces.Remove(lostWing);
+        piecesCount--;
     }
 
     private void OnCollisionEnter(Collision coll)
@@ -94,7 +92,7 @@ public class Enemy_5 : Enemy
 
         if (otherGO.tag == "ProjectileHero")
         {
-            if (pieces.Count <= 0)
+            if (piecesCount <= 0)
             {
                 Projectile p = otherGO.GetComponent<Projectile>();
                 if (!bndCheck.isOnScreen)

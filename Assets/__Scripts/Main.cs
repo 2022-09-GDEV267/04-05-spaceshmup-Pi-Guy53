@@ -13,6 +13,10 @@ public class Main : MonoBehaviour
     public float enemySpawnPerSecond = .5f;
     public float enemyDefaultPadding = 1.5f;
 
+    public GameObject bossEnemy;
+    public int scoreToSpawnBoss;
+    private bool bossDeployed;
+
     public WeaponDefinition[] weaponDefinitions;
 
     public GameObject prefabPowerUp;
@@ -57,8 +61,6 @@ public class Main : MonoBehaviour
 
         scoreTxt.text = "Score: " + score;
         highScoreTxt.text = "High Score: " + highScore;
-
-        print(averageScore);
     }
 
     private void Start()
@@ -70,7 +72,7 @@ public class Main : MonoBehaviour
 
     public void ShipDestroyed(Enemy e)
     {
-        if(Random.value <= e.powerUpDropChance)
+        if (Random.value <= e.powerUpDropChance)
         {
             WeaponType puType = powerUpFrequency[Random.Range(0, powerUpFrequency.Length)];
 
@@ -89,24 +91,44 @@ public class Main : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", score);
         }
 
+        if (e.GetComponent<Enemy_5>())
+        {
+            bossDeployed = false;
+            scoreToSpawnBoss *= 2;
+        }
+
+        if (averageScore >= scoreToSpawnBoss && !bossDeployed)
+        {
+            GameObject go = Instantiate(bossEnemy);
+
+            currentPadding = enemyDefaultPadding;
+
+            go.transform.position = new Vector3(Random.Range(-bndCheck.camWidth + currentPadding, bndCheck.camWidth - currentPadding), bndCheck.camHeight + currentPadding, 0);
+
+            bossDeployed = true;
+        }
+
         scoreTxt.text = "Score: " + score;
         highScoreTxt.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
     }
 
     public void SpawnEnemy()
     {
-        ndx = Random.Range(0, prefabEnemies.Length);
-
-        GameObject go = Instantiate(prefabEnemies[ndx]);
-
-        currentPadding = enemyDefaultPadding;
-
-        if (go.GetComponent<BoundsCheck>())
+        if (!bossDeployed)
         {
-            currentPadding = Mathf.Abs(go.GetComponent<BoundsCheck>().radius);
-        }
+            ndx = Random.Range(0, prefabEnemies.Length);
 
-        go.transform.position = new Vector3(Random.Range(-bndCheck.camWidth + currentPadding, bndCheck.camWidth - currentPadding), bndCheck.camHeight + currentPadding, 0);
+            GameObject go = Instantiate(prefabEnemies[ndx]);
+
+            currentPadding = enemyDefaultPadding;
+
+            if (go.GetComponent<BoundsCheck>())
+            {
+                currentPadding = Mathf.Abs(go.GetComponent<BoundsCheck>().radius);
+            }
+
+            go.transform.position = new Vector3(Random.Range(-bndCheck.camWidth + currentPadding, bndCheck.camWidth - currentPadding), bndCheck.camHeight + currentPadding, 0);
+        }
 
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
     }
