@@ -101,7 +101,7 @@ public class Main : MonoBehaviour
         if (e.GetComponent<Enemy_5>())
         {
             bossDeployed = false;
-            scoreToSpawnBoss *= 2;
+            scoreToSpawnBoss = scoreToSpawnBoss + score;
 
             averageScore = (averageScore + score) / 2;
             PlayerPrefs.SetInt("AverageScore", averageScore);
